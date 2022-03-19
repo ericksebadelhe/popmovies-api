@@ -7,6 +7,7 @@
   "database": "popmovies",
   "migrations": ["./src/database/migrations/*.ts"],
   "migrationsTableName": "migrations",
+  "entities": ["./src/entities/*.ts"],
   "cli": {
     "migrationsDir": "./src/database/migrations"
   }
