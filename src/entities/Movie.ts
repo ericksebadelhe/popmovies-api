@@ -24,6 +24,9 @@ export class Movie {
   year: number;
 
   @Column()
+  release_date: Date;
+
+  @Column()
   category_id: string;
 
   @ManyToOne(() => Category)

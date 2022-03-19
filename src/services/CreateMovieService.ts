@@ -8,11 +8,12 @@ type MovieRequest = {
   synopsis: string;
   rating: number;
   year: number;
+  release_date: Date;
   category_id: string;
 }
 
 export class CreateMovieService {
-  async execute({ title, thumbnail, synopsis, rating, year, category_id }: MovieRequest): Promise<Movie | Error> {
+  async execute({ title, thumbnail, synopsis, rating, year, release_date, category_id }: MovieRequest): Promise<Movie | Error> {
     const movieRepo = getRepository(Movie);
     const categoryRepo = getRepository(Category);
 
@@ -26,6 +27,7 @@ export class CreateMovieService {
       synopsis,
       rating,
       year,
+      release_date,
       category_id
     });
 
