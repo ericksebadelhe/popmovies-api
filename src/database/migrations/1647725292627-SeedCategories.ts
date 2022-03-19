@@ -1,7 +1,7 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 import categories from '../data/categoriesData';
 
-export class SeedMovieCategories1647712603349 implements MigrationInterface {
+export class SeedCategories1647725292627 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
       await Promise.all(

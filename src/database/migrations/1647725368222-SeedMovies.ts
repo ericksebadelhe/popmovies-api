@@ -10,19 +10,19 @@ const movies = data.map(dt => {
   });
 });
 
-export class SeedMovies1647713651804 implements MigrationInterface {
+export class SeedMovies1647725368222 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
       await Promise.all(
         movies.map(movie => queryRunner.query(
-          `INSERT INTO movies (id, title, thumbnail, synopsis, rating, category_id, year) VALUES ('${movie.id}', '${movie.title}', '${movie.thumbnail}', '${movie.synopsis}', ${movie.rating}, '${movie.category_id}', ${movie.year})`
+          `INSERT INTO movies (id, title, thumbnail, synopsis, rating, category_id, year, release_date) VALUES ('${movie.id}', '${movie.title}', '${movie.thumbnail}', '${movie.synopsis}', ${movie.rating}, '${movie.category_id}', ${movie.year}, '${movie.release_date}')`
         )),
       );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
       await Promise.all(movies.map(movie => queryRunner.query(
-        `DELETE FROM movies WHERE id='${movie.id}';`
+        `DELETE FROM movies WHERE title='${movie.title}';`
       )));
     }
 
