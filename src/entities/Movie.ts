@@ -1,6 +1,6 @@
 import { Entity, Column, CreateDateColumn, PrimaryColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid'
-import { MovieCategory } from './MovieCategory';
+import { Category } from './Category';
 
 @Entity('movies')
 export class Movie {
@@ -21,11 +21,14 @@ export class Movie {
   rating: number;
 
   @Column()
+  year: number;
+
+  @Column()
   category_id: string;
 
-  @ManyToOne(() => MovieCategory)
+  @ManyToOne(() => Category)
   @JoinColumn({ name: 'category_id' })
-  category: MovieCategory;
+  category: Category;
 
   @CreateDateColumn()
   created_at: Date;

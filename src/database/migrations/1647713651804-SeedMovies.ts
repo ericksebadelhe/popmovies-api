@@ -22,7 +22,7 @@ export class SeedMovies1647713651804 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> {
       await Promise.all(movies.map(movie => queryRunner.query(
-        `DELETE FROM movies WHERE id=${movie.id};`
+        `DELETE FROM movies WHERE id='${movie.id}';`
       )));
     }
 
