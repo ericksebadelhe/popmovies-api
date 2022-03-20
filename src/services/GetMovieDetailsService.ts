@@ -16,6 +16,7 @@ export class GetMovieDetailsService {
     const movie = {
       ...result,
       rating: Number(result.rating),
+      duration: Number(result.duration),
       year: Number(result.year),
       category: result.category.name,
     }

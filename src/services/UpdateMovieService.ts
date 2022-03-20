@@ -8,6 +8,7 @@ type UpdateMovieRequest = {
   synopsis: string;
   rating: number;
   year: number;
+  duration: number;
   release_date: Date;
   category_id: string;
 }
@@ -20,6 +21,7 @@ export class UpdateMovieService {
     synopsis,
     rating,
     year,
+    duration,
     release_date,
     category_id
   }: UpdateMovieRequest) {
@@ -36,6 +38,7 @@ export class UpdateMovieService {
     movie.synopsis = synopsis || movie.synopsis;
     movie.rating = rating || movie.rating;
     movie.year = year || movie.year;
+    movie.duration = duration || movie.duration;
     movie.release_date = release_date || movie.release_date;
     movie.category_id = category_id || movie.category_id;
 

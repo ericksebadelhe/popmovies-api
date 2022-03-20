@@ -17,6 +17,7 @@ export class UpdateMovieController {
     return response.json({
       ...result,
       rating: Number(result.rating),
+      duration: Number(result.duration),
       year: Number(result.year),
     });
   }

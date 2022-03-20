@@ -8,28 +8,21 @@ type MovieRequest = {
   synopsis: string;
   rating: number;
   year: number;
+  duration: number;
   release_date: Date;
   category_id: string;
 }
 
 export class CreateMovieService {
-  async execute({ title, thumbnail, synopsis, rating, year, release_date, category_id }: MovieRequest): Promise<Movie | Error> {
+  async execute(requestData: MovieRequest): Promise<Movie | Error> {
     const movieRepo = getRepository(Movie);
     const categoryRepo = getRepository(Category);
 
-    if (!await categoryRepo.findOne(category_id)) {
+    if (!await categoryRepo.findOne(requestData.category_id)) {
       return new Error("Movie category not found!");
     }
 
-    const movie = movieRepo.create({
-      title,
-      thumbnail,
-      synopsis,
-      rating,
-      year,
-      release_date,
-      category_id
-    });
+    const movie = movieRepo.create(requestData);
 
     await movieRepo.save(movie);
 

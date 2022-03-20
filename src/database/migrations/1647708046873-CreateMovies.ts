@@ -31,6 +31,18 @@ export class CreateMovies1647708046873 implements MigrationInterface {
               type: 'numeric',
             },
             {
+              name: 'duration',
+              type: 'numeric',
+            },
+            {
+              name: 'year',
+              type: 'numeric',
+            },
+            {
+              name: 'release_date',
+              type: 'timestamp',
+            },
+            {
               name: 'category_id',
               type: 'uuid'
             },

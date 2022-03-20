@@ -3,7 +3,16 @@ import { CreateMovieService } from '../services/CreateMovieService';
 
 export class CreateMovieController {
   async handle(request: Request, response: Response) {
-    const { title, thumbnail, synopsis, rating, year, release_date, category_id } = request.body;
+    const {
+      title,
+      thumbnail,
+      synopsis,
+      rating,
+      duration,
+      year,
+      release_date,
+      category_id
+    } = request.body;
 
     const service = new CreateMovieService();
 
@@ -13,6 +22,7 @@ export class CreateMovieController {
       synopsis,
       rating,
       year,
+      duration,
       release_date,
       category_id
     });

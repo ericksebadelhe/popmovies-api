@@ -15,7 +15,7 @@ export class SeedMovies1647725368222 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
       await Promise.all(
         movies.map(movie => queryRunner.query(
-          `INSERT INTO movies (id, title, thumbnail, synopsis, rating, category_id, year, release_date) VALUES ('${movie.id}', '${movie.title}', '${movie.thumbnail}', '${movie.synopsis}', ${movie.rating}, '${movie.category_id}', ${movie.year}, '${movie.release_date}')`
+          `INSERT INTO movies (id, title, thumbnail, synopsis, rating, duration, year, release_date, category_id) VALUES ('${movie.id}', '${movie.title}', '${movie.thumbnail}', '${movie.synopsis}', ${movie.rating}, ${movie.duration},${movie.year}, '${movie.release_date}', '${movie.category_id}')`
         )),
       );
     }

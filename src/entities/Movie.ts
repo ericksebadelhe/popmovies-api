@@ -21,6 +21,9 @@ export class Movie {
   rating: number;
 
   @Column()
+  duration: number;
+
+  @Column()
   year: number;
 
   @Column()
