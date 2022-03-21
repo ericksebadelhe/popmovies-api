@@ -1,10 +1,10 @@
 import { Router } from 'express';
 
-import { CreateMovieController } from '../controllers/CreateMovieController';
-import { DeleteMovieController } from '../controllers/DeleteMovieController';
-import { GetAllMoviesController } from '../controllers/GetAllMoviesController';
-import { GetMovieDetailsController } from '../controllers/GetMovieDetailsController';
-import { UpdateMovieController } from '../controllers/UpdateMovieController';
+import { CreateMovieController } from '../modules/movies/useCases/createMovie/CreateMovieController';
+import { DeleteMovieController } from '../modules/movies/useCases/deleteMovie/DeleteMovieController';
+import { GetAllMoviesController } from '../modules/movies/useCases/getAllMovies/GetAllMoviesController';
+import { GetMovieDetailsController } from '../modules/movies/useCases/getMovieDetails/GetMovieDetailsController';
+import { UpdateMovieController } from '../modules/movies/useCases/updateMovie/UpdateMovieController';
 
 const moviesRoutes = Router();
 

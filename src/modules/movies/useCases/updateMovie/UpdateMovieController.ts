@@ -1,14 +1,16 @@
 import { Request, Response } from 'express';
-import { UpdateMovieService } from '../services/UpdateMovieService';
+import { container } from 'tsyringe';
+
+import { UpdateMovieUseCase } from '../../useCases/updateMovie/UpdateMovieUseCase';
 
 export class UpdateMovieController {
   async handle(request: Request, response: Response) {
     const { id } = request.params;
     const body = request.body;
 
-    const service = new UpdateMovieService();
+    const updateMovieUseCase = container.resolve(UpdateMovieUseCase);
 
-    const result = await service.execute({ id, ...body });
+    const result = await updateMovieUseCase.execute({ id, ...body });
 
     if (result instanceof Error) {
       return response.status(400).json(result.message);
