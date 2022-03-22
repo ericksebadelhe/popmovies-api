@@ -3,6 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import { Movie } from '../../entities/Movie';
 import { IMoviesRepository } from '../../repositories/IMoviesRepository';
 import { ICreateMovieDTO } from '../../dtos';
+import { AppError } from '../../../../errors/AppError';
 
 @injectable()
 class CreateMovieUseCase {
@@ -26,7 +27,7 @@ class CreateMovieUseCase {
     );
 
     if (movieAlreadyExists) {
-      throw new Error('Movie already exists!');
+      throw new AppError('Movie already exists!');
     }
 
     const newMovie = await this.moviesRepository.create({

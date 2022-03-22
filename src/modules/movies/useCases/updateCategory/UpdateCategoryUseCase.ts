@@ -3,6 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import { Category } from '../../entities/Category';
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 import { ICategoryDTO } from '../../dtos';
+import { AppError } from '../../../../errors/AppError';
 
 @injectable()
 class UpdateCategoryUseCase {
@@ -18,7 +19,7 @@ class UpdateCategoryUseCase {
     const category = await this.categoriesRepository.findById(id);
 
     if (!category) {
-      throw new Error('Category does not exists!');
+      throw new AppError('Category does not exists!');
     }
 
     category.name = name || category.name;

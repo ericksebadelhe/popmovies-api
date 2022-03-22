@@ -2,6 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 import { IDeleteMovieDTO } from '../../dtos';
+import { AppError } from '../../../../errors/AppError';
 
 @injectable()
 class DeleteCategoryUseCase {
@@ -16,7 +17,7 @@ class DeleteCategoryUseCase {
     const category = await this.categoriesRepository.findById(id);
 
     if (!category) {
-      throw new Error('Category does not exists!');
+      throw new AppError('Category does not exists!');
     }
 
     await this.categoriesRepository.delete(id);

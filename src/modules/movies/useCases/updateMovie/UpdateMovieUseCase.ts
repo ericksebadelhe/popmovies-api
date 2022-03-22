@@ -3,6 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import { IMoviesRepository } from '../../repositories/IMoviesRepository';
 import { IUpdateMovieDTO } from '../../dtos';
 import { Movie } from '../../entities/Movie';
+import { AppError } from '../../../../errors/AppError';
 
 @injectable()
 class UpdateMovieUseCase {
@@ -27,7 +28,7 @@ class UpdateMovieUseCase {
     );
 
     if (!movie) {
-      throw new Error('Movie does not exists!');
+      throw new AppError('Movie does not exists!');
     }
 
     movie.title = title || movie.title;

@@ -2,6 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { IMoviesRepository } from '../../repositories/IMoviesRepository';
 import { IDeleteMovieDTO } from '../../dtos';
+import { AppError } from '../../../../errors/AppError';
 
 @injectable()
 class DeleteMovieUseCase {
@@ -18,7 +19,7 @@ class DeleteMovieUseCase {
     );
 
     if (!movie) {
-      throw new Error('Movie does not exists!');
+      throw new AppError('Movie does not exists!');
     }
 
     await this.moviesRepository.delete(id);
