@@ -1,16 +1,16 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IMoviesRepository } from '../../repositories/IMoviesRepository';
+import { AppError } from '../../../../errors/AppError';
 import { IUpdateMovieDTO } from '../../dtos';
 import { Movie } from '../../entities/Movie';
-import { AppError } from '../../../../errors/AppError';
+import { IMoviesRepository } from '../../repositories/IMoviesRepository';
 
 @injectable()
 class UpdateMovieUseCase {
   constructor(
     @inject('MoviesRepository')
-    private moviesRepository: IMoviesRepository
-  ) { }
+    private moviesRepository: IMoviesRepository,
+  ) {}
 
   async execute({
     id,
@@ -21,11 +21,9 @@ class UpdateMovieUseCase {
     year,
     duration,
     release_date,
-    category_id
+    category_id,
   }: IUpdateMovieDTO): Promise<Movie> {
-    const movie = await this.moviesRepository.findById(
-      id,
-    );
+    const movie = await this.moviesRepository.findById(id);
 
     if (!movie) {
       throw new AppError('Movie does not exists!');

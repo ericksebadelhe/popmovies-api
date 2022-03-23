@@ -1,7 +1,8 @@
-import {v4 as uuid} from 'uuid';
-import { Category } from "../../entities/Category";
-import { ICategoriesRepository } from "../ICategoriesRepository";
-import { ICreateCategoryDTO } from "../../dtos";
+import { v4 as uuid } from 'uuid';
+
+import { ICreateCategoryDTO } from '../../dtos';
+import { Category } from '../../entities/Category';
+import { ICategoriesRepository } from '../ICategoriesRepository';
 
 class CategoriesRepositoryInMemory implements ICategoriesRepository {
   categories: Category[] = [];
@@ -32,13 +33,17 @@ class CategoriesRepositoryInMemory implements ICategoriesRepository {
   }
 
   async save(category: Category): Promise<Category> {
-    const findIndex = this.categories.findIndex(findCategory => findCategory.id === category.id);
+    const findIndex = this.categories.findIndex(
+      findCategory => findCategory.id === category.id,
+    );
     this.categories[findIndex] = category;
     return category;
   }
 
   async delete(id: string): Promise<void> {
-    const findIndex = this.categories.findIndex(findCategory => findCategory.id === id);
+    const findIndex = this.categories.findIndex(
+      findCategory => findCategory.id === id,
+    );
     this.categories.splice(findIndex, 1);
   }
 }

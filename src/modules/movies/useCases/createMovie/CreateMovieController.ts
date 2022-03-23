@@ -13,7 +13,7 @@ export class CreateMovieController {
       duration,
       year,
       release_date,
-      category_id
+      category_id,
     } = request.body;
 
     const createMovieUseCase = container.resolve(CreateMovieUseCase);
@@ -26,8 +26,8 @@ export class CreateMovieController {
       duration,
       year,
       release_date,
-      category_id
-     });
+      category_id,
+    });
 
     if (result instanceof Error) {
       return response.status(400).json(result.message);

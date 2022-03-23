@@ -1,8 +1,8 @@
 import { getRepository, Repository } from 'typeorm';
 
+import { ICreateMovieDTO, IGetAllMoviesDTO } from '../../dtos';
 import { Movie } from '../../entities/Movie';
 import { IMoviesRepository } from '../IMoviesRepository';
-import { ICreateMovieDTO, IGetAllMoviesDTO } from '../../dtos';
 
 class MoviesRepository implements IMoviesRepository {
   private repository: Repository<Movie>;
@@ -19,8 +19,8 @@ class MoviesRepository implements IMoviesRepository {
     year,
     duration,
     release_date,
-    category_id
-   }: ICreateMovieDTO): Promise<Movie> {
+    category_id,
+  }: ICreateMovieDTO): Promise<Movie> {
     const newMovie = this.repository.create({
       title,
       thumbnail,
@@ -67,7 +67,7 @@ class MoviesRepository implements IMoviesRepository {
 
   async findByTitle(title: string): Promise<Movie | undefined> {
     const movie = this.repository.findOne({
-      where: { title }
+      where: { title },
     });
     return movie;
   }

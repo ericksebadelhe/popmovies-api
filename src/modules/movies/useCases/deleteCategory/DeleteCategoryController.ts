@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { DeleteCategoryUseCase } from '../../useCases/deleteCategory/DeleteCategoryUseCase';
+import { DeleteCategoryUseCase } from './DeleteCategoryUseCase';
 
 class DeleteCategoryController {
   async handle(request: Request, response: Response) {

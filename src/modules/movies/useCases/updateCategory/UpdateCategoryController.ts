@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { UpdateCategoryUseCase } from '../../useCases/updateCategory/UpdateCategoryUseCase'
+import { UpdateCategoryUseCase } from './UpdateCategoryUseCase';
 
 class UpdateCategoryController {
   async handle(request: Request, response: Response) {

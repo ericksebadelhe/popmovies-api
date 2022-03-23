@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { DeleteMovieUseCase } from '../../useCases/deleteMovie/DeleteMovieUseCase';
+import { DeleteMovieUseCase } from './DeleteMovieUseCase';
 
 class DeleteMovieController {
   async handle(request: Request, response: Response) {

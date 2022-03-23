@@ -1,10 +1,17 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { v4 as uuid } from 'uuid'
+import {
+  Entity,
+  Column,
+  CreateDateColumn,
+  PrimaryColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+import { v4 as uuid } from 'uuid';
+
 import { Category } from './Category';
 
 @Entity('movies')
 export class Movie {
-
   @PrimaryColumn()
   id: string;
 
@@ -41,7 +48,7 @@ export class Movie {
 
   constructor() {
     if (!this.id) {
-      this.id = uuid()
+      this.id = uuid();
     }
   }
 }

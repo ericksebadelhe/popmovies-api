@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { UpdateMovieUseCase } from '../../useCases/updateMovie/UpdateMovieUseCase';
+import { UpdateMovieUseCase } from './UpdateMovieUseCase';
 
 export class UpdateMovieController {
   async handle(request: Request, response: Response) {
     const { id } = request.params;
-    const body = request.body;
+    const { body } = request;
 
     const updateMovieUseCase = container.resolve(UpdateMovieUseCase);
 

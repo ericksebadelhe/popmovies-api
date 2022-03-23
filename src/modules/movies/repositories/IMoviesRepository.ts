@@ -1,5 +1,5 @@
-import { Movie } from '../entities/Movie';
 import { ICreateMovieDTO, IGetAllMoviesDTO } from '../dtos';
+import { Movie } from '../entities/Movie';
 
 interface IMoviesRepository {
   create({
@@ -10,7 +10,7 @@ interface IMoviesRepository {
     year,
     duration,
     release_date,
-    category_id
+    category_id,
   }: ICreateMovieDTO): Promise<Movie>;
   getAll(): Promise<IGetAllMoviesDTO[]>;
   getDetails(id: string): Promise<Movie | undefined>;

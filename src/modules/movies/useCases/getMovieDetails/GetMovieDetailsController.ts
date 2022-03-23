@@ -1,8 +1,7 @@
-
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { GetMovieDetailsUseCase } from '../../useCases/getMovieDetails/GetMovieDetailsUseCase';
+import { GetMovieDetailsUseCase } from './GetMovieDetailsUseCase';
 
 export class GetMovieDetailsController {
   async handle(request: Request, response: Response): Promise<Response> {

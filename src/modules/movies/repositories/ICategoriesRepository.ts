@@ -1,5 +1,5 @@
-import { Category } from '../entities/Category';
 import { ICreateCategoryDTO } from '../dtos';
+import { Category } from '../entities/Category';
 
 interface ICategoriesRepository {
   create({ name }: ICreateCategoryDTO): Promise<Category>;

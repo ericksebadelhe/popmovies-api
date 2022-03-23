@@ -1,16 +1,16 @@
 import { inject, injectable } from 'tsyringe';
 
+import { AppError } from '../../../../errors/AppError';
+import { ICreateMovieDTO } from '../../dtos';
 import { Movie } from '../../entities/Movie';
 import { IMoviesRepository } from '../../repositories/IMoviesRepository';
-import { ICreateMovieDTO } from '../../dtos';
-import { AppError } from '../../../../errors/AppError';
 
 @injectable()
 class CreateMovieUseCase {
   constructor(
     @inject('MoviesRepository')
-    private moviesRepository: IMoviesRepository
-    ) { }
+    private moviesRepository: IMoviesRepository,
+  ) {}
 
   async execute({
     title,
@@ -20,11 +20,9 @@ class CreateMovieUseCase {
     year,
     duration,
     release_date,
-    category_id
+    category_id,
   }: ICreateMovieDTO): Promise<Movie> {
-    const movieAlreadyExists = await this.moviesRepository.findByTitle(
-      title,
-    );
+    const movieAlreadyExists = await this.moviesRepository.findByTitle(title);
 
     if (movieAlreadyExists) {
       throw new AppError('Movie already exists!');
@@ -38,7 +36,7 @@ class CreateMovieUseCase {
       year,
       duration,
       release_date,
-      category_id
+      category_id,
     });
     return newMovie;
   }

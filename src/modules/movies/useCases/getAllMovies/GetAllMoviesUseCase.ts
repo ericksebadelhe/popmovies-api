@@ -1,13 +1,13 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IMoviesRepository } from '../../repositories/IMoviesRepository';
 import { IGetAllMoviesDTO } from '../../dtos';
+import { IMoviesRepository } from '../../repositories/IMoviesRepository';
 
 @injectable()
 class GetAllMoviesUseCase {
   constructor(
     @inject('MoviesRepository')
-    private moviesRepository: IMoviesRepository
+    private moviesRepository: IMoviesRepository,
   ) {}
 
   async execute(): Promise<IGetAllMoviesDTO[]> {
